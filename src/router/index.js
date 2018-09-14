@@ -1,15 +1,24 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
-  ]
+      name: 'index',
+      component: reslove => require(['../pages/Index'], reslove),
+      children: [{
+          path: '/heroDetail',
+          name: 'heroDetail',
+          component: reslove => require(['../pages/HeroDetail'], reslove)
+      },{
+          path: '/eqDetail',
+          name: 'eqDetail',
+          component: reslove => require(['../pages/EquipmentDetail'], reslove)
+      }]
+  },{
+      path: '*',
+      redirect: '/'
+  }]
 })

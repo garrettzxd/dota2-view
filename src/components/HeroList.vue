@@ -1,0 +1,9 @@
+<template>
+    <div>
+        <ul>
+            <li>英雄1</li>
+            <li>英雄2</li>
+            <li>英雄3</li>
+        </ul>
+    </div>
+</template>
