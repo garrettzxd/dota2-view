@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav-bar></nav-bar>
+        <nav-bar title="标题" show-back></nav-bar>
         <div>这里是内容</div>
         <tab-bar></tab-bar>
     </div>
