@@ -28,7 +28,7 @@
 
         methods: {
             backClick() {
-                console.log('back');
+                this.$router.back();
             }
         }
     }

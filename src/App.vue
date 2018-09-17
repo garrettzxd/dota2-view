@@ -11,7 +11,11 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Microsoft YaHei','Avenir', Helvetica, Arial, sans-serif;
-}
+    body{
+        background: #cccccc;
+        margin: 0;
+    }
+    #app {
+      font-family: 'Microsoft YaHei','Avenir', Helvetica, Arial, sans-serif;
+    }
 </style>
