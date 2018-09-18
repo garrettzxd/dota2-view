@@ -6,7 +6,23 @@
 
 <script>
     export default {
-        name: 'TabBar'
+        name: 'TabBar',
+
+        props: {
+            value: [String,Number]
+        },
+
+        provide() {
+            return {
+                tabBar: this
+            }
+        },
+
+        methods: {
+            updateFocus(val) {
+                this.$emit("input",val);
+            }
+        }
     }
 </script>
 
@@ -14,7 +30,6 @@
     .tab-content{
         width: 100%;
         height: 50px;
-        line-height: 50px;
         position: fixed;
         bottom: 0;
         left: 0;
