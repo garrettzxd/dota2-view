@@ -1,11 +1,24 @@
 <template>
     <div>
         <nav-bar :title="nav_title"></nav-bar>
-        <main-content>111</main-content>
+        <main-content>
+            <simple-card
+                name="亚巴顿"
+                nick-name="阿巴东"
+                position="耐久 逃生"
+                img-url="http://dota2-imgs.oss-cn-beijing.aliyuncs.com/heroes/abaddon_hphover.png">
+            </simple-card>
+            <simple-card
+                name="恐怖利刃"
+                nick-name="TB"
+                position="核心 后期"
+                img-url="http://dota2-imgs.oss-cn-beijing.aliyuncs.com/heroes/terrorblade_hphover.png">
+            </simple-card>
+        </main-content>
         <tab-bar v-model="current">
-            <tab-item text="力量" img-url="http://dota2-imgs.oss-cn-beijing.aliyuncs.com/items/power.png" name="power"></tab-item>
-            <tab-item text="敏捷" img-url="http://dota2-imgs.oss-cn-beijing.aliyuncs.com/items/power.png" name="agile"></tab-item>
-            <tab-item text="智力" img-url="http://dota2-imgs.oss-cn-beijing.aliyuncs.com/items/power.png" name="brains"></tab-item>
+            <tab-item text="力量" img-url="http://dota2-imgs.oss-cn-beijing.aliyuncs.com/icon/overviewicon_str.png" name="power"></tab-item>
+            <tab-item text="敏捷" img-url="http://dota2-imgs.oss-cn-beijing.aliyuncs.com/icon/overviewicon_agi.png" name="agile"></tab-item>
+            <tab-item text="智力" img-url="http://dota2-imgs.oss-cn-beijing.aliyuncs.com/icon/overviewicon_int.png" name="brains"></tab-item>
         </tab-bar>
     </div>
 </template>

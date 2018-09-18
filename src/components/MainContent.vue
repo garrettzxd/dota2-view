@@ -6,6 +6,8 @@
 
 <style scoped>
     .main-content{
-        margin-top: 46px;
+        margin-top: 56px;
+        padding-left: 8px;
+        background: #fff;
     }
 </style>

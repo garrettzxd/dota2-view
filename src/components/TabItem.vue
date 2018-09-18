@@ -1,6 +1,6 @@
 <template>
     <div class="tab-item" @click="itemClick">
-        <img v-if="imgUrl" :src="imgUrl" class="tab-img"/>
+        <img v-if="imgUrl" :src="imgUrl" class="tab-img" :class="{imgActive: !_isActive}"/>
         <div class="tab-text" :class="{active: _isActive}">{{text}}</div>
     </div>
 </template>
@@ -51,9 +51,15 @@
     }
     .tab-img{
         width: 25px;
+        margin-top: -3px;
+    }
+    .imgActive{
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
     }
     .tab-text{
         font-size: 12px;
+        color: #ccc;
     }
     .active{
         color: #38f;

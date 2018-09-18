@@ -12,7 +12,7 @@ export default {
 
 <style>
     body{
-        background: #cccccc;
+        background: #e0e5ea;
         margin: 0;
     }
     #app {
