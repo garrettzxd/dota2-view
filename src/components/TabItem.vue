@@ -17,8 +17,11 @@
             to: {
                 type: String
             },
-            imgUrl: String,
-            name: String
+            name: {
+                type: String,
+                required: true
+            },
+            imgUrl: String
         },
 
         inject: ['tabBar'],
@@ -38,6 +41,9 @@
         methods: {
             itemClick() {
                 this.tabBar.updateFocus(this.name);
+                if (this.to) {
+                    this.$router.push({name: this.to,params: {type: this.name}})
+                }
             }
         }
     }
@@ -54,8 +60,8 @@
         margin-top: -3px;
     }
     .imgActive{
-        -webkit-filter: grayscale(100%);
-        filter: grayscale(100%);
+        -webkit-filter: grayscale(85%);
+        filter: grayscale(85%);
     }
     .tab-text{
         font-size: 12px;

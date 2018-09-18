@@ -5,20 +5,16 @@ Vue.use(Router)
 
 export default new Router({
   routes: [{
-      path: '/',
+      path: '/index',
       name: 'index',
       component: reslove => require(['../pages/Index'], reslove),
       children: [{
-          path: '/heroDetail',
-          name: 'heroDetail',
-          component: reslove => require(['../pages/HeroDetail'], reslove)
-      },{
-          path: '/eqDetail',
-          name: 'eqDetail',
-          component: reslove => require(['../pages/EquipmentDetail'], reslove)
+          path: 'heroList/:type',
+          name: 'heroList',
+          component: reslove => require(['../pages/HeroList'], reslove)
       }]
   },{
       path: '*',
-      redirect: '/'
+      redirect: {name: 'heroList',params:{type: 'power'}}
   }]
 })
