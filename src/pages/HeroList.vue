@@ -1,5 +1,6 @@
 <template>
     <main-content>
+        <title-show :title="title"></title-show>
         <simple-card
             v-for="(item,index) in data_list"
             :key="index"
@@ -13,6 +14,7 @@
 
 <script>
     import MainContent from '../components/MainContent'
+    import TitleShow from '../components/TitleShow'
     import SimpleCard from  '../components/HeroSimpleCard'
     export default {
         name: 'HeroList',
@@ -23,21 +25,36 @@
 
         beforeRouteUpdate(to, from, next) {
             let route = to.params.type;
+            this.title.en_title = route;
             switch (route) {
-                case 'power': this.data_list = this.power_list; break;
-                case 'agile': this.data_list = this.agile_list; break;
-                case 'brains': this.data_list = this.brains_list; break;
+                case 'power':
+                    this.data_list = this.power_list;
+                    this.title.cn_title = '力量';
+                    break;
+                case 'agile':
+                    this.data_list = this.agile_list;
+                    this.title.cn_title = '敏捷';
+                    break;
+                case 'brains':
+                    this.data_list = this.brains_list;
+                    this.title.cn_title = '智力';
+                    break;
             }
             next()
         },
 
         components: {
             MainContent,
-            SimpleCard
+            SimpleCard,
+            TitleShow
         },
 
         data() {
             return {
+                title: {
+                    en_title: 'power',
+                    cn_title: '力量'
+                },
                 data_list: [],
                 power_list: [{
                     name: '亚巴顿',
