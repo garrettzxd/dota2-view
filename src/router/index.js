@@ -9,12 +9,12 @@ export default new Router({
       name: 'index',
       component: reslove => require(['../pages/Index'], reslove),
       children: [{
-          path: 'heroList/:type',
+          path: 'heroList',
           name: 'heroList',
           component: reslove => require(['../pages/HeroList'], reslove)
       }]
   },{
       path: '*',
-      redirect: {name: 'heroList',params:{type: 'power'}}
+      redirect: {name: 'heroList'}
   }]
 })

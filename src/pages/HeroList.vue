@@ -1,19 +1,30 @@
 <template>
-    <main-content>
+    <div>
         <title-show :title="title"></title-show>
+
         <simple-card
-            v-for="(item,index) in data_list"
+            v-for="(item,index) in dataList"
             :key="index"
             :name="item.name"
             :nick-name="item.nick_name"
             :position="item.position"
             :img-url="item.img_url">
         </simple-card>
-    </main-content>
+
+        <tab-bar v-model="current">
+            <tab-item
+                v-for="(item, index) in item_list"
+                :key="index"
+                :text="item.text"
+                :val="item.val"
+                :img-url="item.img_url">
+            </tab-item>
+        </tab-bar>
+    </div>
 </template>
 
 <script>
-    import MainContent from '../components/MainContent'
+    import {OSS_BASE_URL} from "../common/contants";
     import TitleShow from '../components/TitleShow'
     import SimpleCard from  '../components/HeroSimpleCard'
     export default {
@@ -23,39 +34,49 @@
             this.data_list = this.power_list;
         },
 
-        beforeRouteUpdate(to, from, next) {
-            let route = to.params.type;
-            this.title.en_title = route;
-            switch (route) {
-                case 'power':
-                    this.data_list = this.power_list;
-                    this.title.cn_title = '力量';
-                    break;
-                case 'agile':
-                    this.data_list = this.agile_list;
-                    this.title.cn_title = '敏捷';
-                    break;
-                case 'brains':
-                    this.data_list = this.brains_list;
-                    this.title.cn_title = '智力';
-                    break;
-            }
-            next()
-        },
-
         components: {
-            MainContent,
             SimpleCard,
             TitleShow
         },
 
+        computed: {
+            title() {
+                let lastest = Object.create(null);
+                switch (this.current) {
+                    case 'power' : lastest = {en_title: this.current,cn_title: '力量'}; break;
+                    case 'agile' : lastest = {en_title: this.current,cn_title: '敏捷'}; break;
+                    case 'brains' : lastest = {en_title: this.current,cn_title: '智力'}; break;
+                }
+                return lastest;
+            },
+
+            dataList() {
+                let list = null;
+                switch (this.current) {
+                    case 'power' : list = this.power_list; break;
+                    case 'agile' : list = this.agile_list; break;
+                    case 'brains' : list = this.brains_list; break;
+                }
+                return list;
+            }
+        },
+
         data() {
             return {
-                title: {
-                    en_title: 'power',
-                    cn_title: '力量'
-                },
-                data_list: [],
+                current: 'power',
+                item_list: [{
+                    text: '力量',
+                    val: 'power',
+                    img_url: `${OSS_BASE_URL}icon/overviewicon_str.png`
+                },{
+                    text: '敏捷',
+                    val: 'agile',
+                    img_url: `${OSS_BASE_URL}icon/overviewicon_agi.png`
+                },{
+                    text: '智力',
+                    val: 'brains',
+                    img_url: `${OSS_BASE_URL}icon/overviewicon_int.png`
+                }],
                 power_list: [{
                     name: '亚巴顿',
                     nick_name: '阿巴东',
