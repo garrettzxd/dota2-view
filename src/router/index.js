@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import skeRoute from './skeleton-route'
 
 Vue.use(Router)
 
@@ -16,5 +17,6 @@ export default new Router({
   },{
       path: '*',
       redirect: {name: 'heroList'}
-  }]
+  },
+  skeRoute]
 })
